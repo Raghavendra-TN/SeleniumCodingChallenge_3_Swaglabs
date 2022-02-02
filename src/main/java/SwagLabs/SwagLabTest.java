@@ -9,6 +9,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Stream;
 
 import static org.openqa.selenium.support.locators.RelativeLocator.*;
 import static org.openqa.selenium.support.locators.RelativeLocator.with;
@@ -48,8 +49,7 @@ public class SwagLabTest {
             text = removeFirstCharacter(text);
             values.add(Double.parseDouble(text));
         }
-        Collections.sort(values);
-        Collections.reverse(values);
-        return values.get(0);
+        Double var = values.stream().max(Double::compare).get();
+        return var;
     }
 }
